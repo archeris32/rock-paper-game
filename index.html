@@ -5,11 +5,92 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css
+    ">
 </head>
 <body>
-    <script src="script.js">
-        
-    </script>
     
+    <script>
+        let name = prompt("please enter name:")
+        let compResult = 0;
+        let playerResult=0;
+        let playerSelection = ""
+        let computerSelection = getComputerChoice()
+        let result = ""
+        function getComputerChoice(){
+            var Myarray = ["rock","paper","scissor"];
+            var random=Math.floor(Math.random()*Myarray.length)
+            let choice=Myarray[random]
+            return choice
+         }
+
+        function round(playerSelection){
+            if(compResult <4 && playerResult <4){
+                let computerSelection = getComputerChoice()
+                if ((playerSelection == 'rock' && computerSelection == 'scissor') ||
+                (playerSelection == 'scissor' && computerSelection == 'paper') ||
+                (playerSelection == 'paper' && computerSelection == 'rock')){
+                    playerResult+=1;
+                return  result = (name+ ',you win! ' + playerSelection + ' beats ' + computerSelection
+                    + "<br><br>Player score: " + playerResult + "<br>Computer score: " + compResult)
+                    
+                }
+                else if (playerSelection == computerSelection){
+                    return result = ('It\'s a tie. You both chose ' + playerSelection
+                    + "<br><br>Player score: " + playerResult + "<br>Computer score: " + compResult)
+                }
+                else{
+                    compResult += 1
+                return result = ('You lose! ' + computerSelection + ' beats ' + playerSelection
+                    + "<br><br>Player score: " + playerResult + "<br>Computer score: " + compResult)
+        }}
+            else{
+                if (compResult>playerResult){
+                    return result = ("This is the end of the game. the winer is Computer")
+                }
+                else{
+                    return result = ("This is the end of the game. the winer is " + name)
+                }
+               
+        }
+        
+        }
+    
+        function rockFunction(){
+            playerSelection= "rock"
+            document.getElementById("result").innerHTML=round(playerSelection,computerSelection)
+        }
+        function paperFunction(){
+            playerSelection= "paper"
+            document.getElementById("result").innerHTML=round(playerSelection,computerSelection)
+        }
+        function scissFunction(){
+            playerSelection= "scissor"
+            document.getElementById("result").innerHTML=round(playerSelection,computerSelection)
+        }
+        function reset(){
+            compResult = 0;
+            playerResult=0;
+            document.getElementById("result").innerHTML= ""
+        }
+    </script>
+    <div class="title">
+        <h1>Rock Paper Scissors Game</h1> 
+    </div>
+    <div class="buttons">
+        <button onclick="rockFunction()"> Rock</button>
+        <button onclick="paperFunction()">Paper</button>
+        <button onclick="scissFunction()">Scissors</button>
+    </div>
+    <div class="resultArea">
+        <p id="result"></p>
+    </div>
+    <div class="center-v center-h">
+        <button id= "reset" onclick="reset()" >Reset</button>
+    </div>
+
+    
+    <p> </p>
+
 </body>
 </html>
